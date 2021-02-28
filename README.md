@@ -28,7 +28,7 @@ In the Main.java:s prog array I have written a demo program for testing, let's b
 "02" - 0 means it's an integer, so it means: "Push 2 to the stack".
 "03" - "Push 3 to the stack".
 "21" - 2 means it's an operation, 1 means it's addition: "Add the two integers on top of the stack (2 and 3)".
-"20" - 2 means it's an operation, 2 means it's "halt": "Print the top of the stack and stop the VM".
+"20" - 2 means it's an operation, 0 means it's "halt": "Print the top of the stack and stop the VM".
 
 Output should look like this:
 
