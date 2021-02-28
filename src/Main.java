@@ -5,7 +5,7 @@ public class Main {
 		StackVM vm = new StackVM();
 		vm.allocateStack(100);
 		
-		String[] prog = {"02", "03", "21", "20"};
+		String[] prog = {"02", "03", "21", "04", "22", "20"};
 
 		vm.allocateMemory(prog.length);
 		vm.loadProgram(prog);

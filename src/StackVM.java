@@ -1,12 +1,19 @@
 public class StackVM {
 
-	private int pc = 0;
-	private int sp = 0;
-	private int typ;
-	private int dat = 0;
-	private int running = 1;
-	private String[] memory;
-	private int[] stack;
+	//Operations:
+	//
+	//0 = halt
+	//1 = addition
+	//2 = subtraction
+
+
+	private int pc = 0;       	//Program counter
+	private int sp = 0;	  	//Stack pointer
+	private int typ;		//Type of an instruction (Operation or integer)
+	private int dat = 0;		//The data an instruction carries (int or number of command)
+	private int running = 1;	//VM running or not. Makes debugging easier.
+	private String[] memory;	//Memory for the program the VM is running.
+	private int[] stack;		//Stack's memory
 
 	
 	public void allocateMemory(int size) {
@@ -45,11 +52,11 @@ public class StackVM {
 	}
 
 	private void execute() {
-		if (typ == 0 || typ == 1) {
+		if (typ == 0 || typ == 1) {	//If headers say it's a variable, add to stack
 			this.sp++;
 			stack[sp] = dat;
 		} else {
-			doPrimitive();
+			doPrimitive();		//Else choose an operation
 		}
 	}
 
@@ -63,6 +70,12 @@ public class StackVM {
 			case 1: // Add
 				System.out.println("Add " + this.stack[sp - 1] + " " + this.stack[sp] + "\n");
 				this.stack[sp - 1] = this.stack[sp - 1] + this.stack[sp];
+				this.sp--;
+				break;
+
+			case 2: // Subtract
+				System.out.println("Subtract " + this.stack[sp - 1] + " " + this.stack[sp] + "\n");
+				this.stack[sp - 1] = this.stack[sp - 1] - this.stack[sp];
 				this.sp--;
 				break;
 		}
