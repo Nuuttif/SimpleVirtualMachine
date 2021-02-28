@@ -12,7 +12,7 @@ Lets decode the instruction "035" for example.
 "0" is the header. Since it's 0 or 1, we are pushing an integer to the stack. "35" is left, which is the integer we are pushing.
 So "035" means: "Push 35 to the top of stack".
 
-If the header decimal is something else than 0 or 1, it means the instruction is an operation (like addition) and the next decimal tells which operation we want the computer to run.
+If the header decimal is something other than 0 or 1, it means the instruction is an operation (like addition) and the next decimal tells which operation we want the computer to run.
 0 = halt
 1 = addition
 
@@ -21,3 +21,20 @@ Header "2" means it's an operation rather than just an integer we are pushing to
 There's currently only 2 operations (0 = halt, 1 = addition).
 As we can see "1" is addition.
 So "21" means: "Add the last two integers on top of the stack together and push it on top of the stack".
+
+In the Main.java:s prog array I have written a demo program for testing, let's break it down.
+"02", "03", "21", "20".
+
+"02" - 0 means it's an integer, so it means: "Push 2 to the stack".
+"03" - "Push 3 to the stack".
+"21" - 2 means it's an operation, 1 means it's addition: "Add the two integers on top of the stack (2 and 3)".
+"20" - 2 means it's an operation, 2 means it's "halt": "Print the top of the stack and stop the VM".
+
+Output should look like this:
+
+Tos: 2
+Tos: 3
+Add 2 3
+
+Tos: 5
+Halt
